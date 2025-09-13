@@ -129,7 +129,7 @@ require("conform").setup({
 -- ===============================
 local telescope = require("telescope.builtin")
 vim.keymap.set("n", "<leader>ff", function()
-	telescope.find_files({ hidden = true })
+	telescope.find_files()
 end)
 vim.keymap.set("n", "<leader>fg", function()
 	telescope.live_grep()
