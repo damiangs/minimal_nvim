@@ -47,6 +47,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+	"catppuccin/nvim",
 	"vague2k/vague.nvim",
 	"neovim/nvim-lspconfig",
 	"williamboman/mason.nvim",
@@ -58,6 +59,7 @@ require("lazy").setup({
 	"stevearc/conform.nvim",
 	"nvim-telescope/telescope.nvim",
 	"nvim-lua/plenary.nvim",
+	"github/copilot.vim",
 })
 
 -- ===============================
@@ -71,11 +73,8 @@ require("mason-lspconfig").setup({
 -- ===============================
 --              LSP
 -- ===============================
-local lspconfig = require("lspconfig")
-local servers = { "lua_ls", "gopls", "pylsp" }
-for _, lsp in ipairs(servers) do
-	lspconfig[lsp].setup({})
-end
+
+vim.lsp.enable({ "lua_ls", "gopls", "pylsp" })
 
 -- ===============================
 --            CMP
@@ -144,5 +143,5 @@ end)
 -- ===============================
 --          COLORS & UI
 -- ===============================
-vim.cmd("colorscheme vague")
-vim.cmd(":hi StatusLine guibg=NONE")
+vim.cmd("colorscheme catppuccin-mocha")
+vim.cmd(":hi clear StatusLine guibg=NONE")
