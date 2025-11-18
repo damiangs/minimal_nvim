@@ -52,6 +52,7 @@ require("lazy").setup({
 	"neovim/nvim-lspconfig",
 	"williamboman/mason.nvim",
 	"williamboman/mason-lspconfig.nvim",
+	"WhoIsSethDaniel/mason-tool-installer.nvim",
 	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
 	"hrsh7th/nvim-cmp",
 	"hrsh7th/cmp-nvim-lsp",
@@ -67,14 +68,26 @@ require("lazy").setup({
 -- ===============================
 require("mason").setup()
 require("mason-lspconfig").setup({
-	ensure_installed = { "lua_ls", "gopls", "pylsp" },
+	ensure_installed = { "lua_ls", "gopls", "pylsp", "ts_ls", },
+})
+require("mason-tool-installer").setup({
+	ensure_installed = {
+		-- Formatters
+		"stylua",
+		"black",
+		"shfmt",
+		"jq",
+		"prettier",
+		"gofumpt",
+	},
+	run_on_start = true,
 })
 
 -- ===============================
 --              LSP
 -- ===============================
 
-vim.lsp.enable({ "lua_ls", "gopls", "pylsp" })
+vim.lsp.enable({ "lua_ls", "gopls", "pylsp", "ts_ls", })
 
 -- ===============================
 --            CMP
@@ -101,7 +114,7 @@ vim.cmd([[set completeopt=menuone,noselect]])
 --         TREESITTER
 -- ===============================
 require("nvim-treesitter.configs").setup({
-	ensure_installed = { "lua", "bash", "python", "json", "go" },
+	ensure_installed = { "lua", "bash", "python", "json", "go", "javascript", "typescript", },
 	highlight = { enable = true },
 	indent = { enable = true },
 })
@@ -113,9 +126,11 @@ require("conform").setup({
 	formatters_by_ft = {
 		lua = { "stylua" },
 		python = { "black" },
-		go = { "gofmt" },
+		go = { "gofumpt" },
 		json = { "jq" },
 		bash = { "shfmt" },
+		javascript = { "prettier" },
+		typescript = { "prettier" },
 	},
 	format_on_save = {
 		timeout_ms = 500,
