@@ -68,7 +68,7 @@ require("lazy").setup({
 -- ===============================
 require("mason").setup()
 require("mason-lspconfig").setup({
-	ensure_installed = { "lua_ls", "gopls", "pylsp", "ts_ls", },
+	ensure_installed = { "lua_ls", "gopls", "pylsp", "ts_ls" },
 })
 require("mason-tool-installer").setup({
 	ensure_installed = {
@@ -87,7 +87,7 @@ require("mason-tool-installer").setup({
 --              LSP
 -- ===============================
 
-vim.lsp.enable({ "lua_ls", "gopls", "pylsp", "ts_ls", })
+vim.lsp.enable({ "lua_ls", "gopls", "pylsp", "ts_ls" })
 
 -- ===============================
 --            CMP
@@ -114,7 +114,7 @@ vim.cmd([[set completeopt=menuone,noselect]])
 --         TREESITTER
 -- ===============================
 require("nvim-treesitter.configs").setup({
-	ensure_installed = { "lua", "bash", "python", "json", "go", "javascript", "typescript", },
+	ensure_installed = { "lua", "bash", "python", "json", "go", "javascript", "typescript" },
 	highlight = { enable = true },
 	indent = { enable = true },
 })
