@@ -60,7 +60,6 @@ require("lazy").setup({
 	"stevearc/conform.nvim",
 	"nvim-telescope/telescope.nvim",
 	"nvim-lua/plenary.nvim",
-	"github/copilot.vim",
 })
 
 -- ===============================
@@ -158,5 +157,5 @@ end)
 -- ===============================
 --          COLORS & UI
 -- ===============================
-vim.cmd("colorscheme catppuccin-mocha")
+vim.cmd("colorscheme vague")
 vim.cmd(":hi clear StatusLine guibg=NONE")
