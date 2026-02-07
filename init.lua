@@ -159,3 +159,7 @@ end)
 -- ===============================
 vim.cmd("colorscheme vague")
 vim.cmd(":hi clear StatusLine guibg=NONE")
+vim.cmd([[
+  highlight Normal guibg=NONE ctermbg=NONE
+  highlight NormalFloat guibg=NONE ctermbg=NONE
+]])
